@@ -1,5 +1,14 @@
+# Pastas de build
 bin/
 obj/
+
+# Configurações do VS
 .vs/
+.vscode/
 *.user
 *.suo
+
+# Arquivos temporários
+*.log
+*.tmp
+
