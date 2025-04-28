@@ -13,7 +13,7 @@ namespace ProjetoBolao
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentException("O nome não pode ser vazio!");
+                    throw new ArgumentException("Erro: O nome não pode ser vazio!");
                 }
                 this._nome = value;
             }
@@ -27,7 +27,7 @@ namespace ProjetoBolao
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("A pontuação não pode ser negativa!");
+                    throw new ArgumentException("Erro: A pontuação não pode ser negativa!");
                 }
                 this._pontos = value;
             }

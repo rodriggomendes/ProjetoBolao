@@ -13,7 +13,7 @@ namespace ProjetoBolao
 
             var jogadorEncontrado = jogadores.Find(jogador => jogador.Nome.Equals(nomeEditar, StringComparison.OrdinalIgnoreCase));
 
-            if (jogadorEncontrado.Equals(default(Jogador)))
+            if (jogadorEncontrado == null)
             {
                 Console.WriteLine("Jogador não encontrado!");
                 Limpar.LimparTela();
@@ -23,20 +23,24 @@ namespace ProjetoBolao
             Console.WriteLine("Informe o número de pontos que deseja adicionar ao jogador: ");
             string adicionarPontos = Console.ReadLine();
 
-            if (int.TryParse(adicionarPontos, out int Pontos))
+            if (int.TryParse(adicionarPontos, out int pontos))
             {
-                int indice = jogadores.FindIndex(jogador => jogador.Nome.Equals(nomeEditar, StringComparison.OrdinalIgnoreCase));
-
-                if (indice != -1)
+                try
                 {
-                    jogadores[indice] = new Jogador { Nome = jogadorEncontrado.Nome, Pontos = jogadorEncontrado.Pontos + Pontos };
-                    Console.WriteLine("Pontuação atualizada com sucesso!");
+                    jogadorEncontrado.Pontos += pontos;
+                    Console.WriteLine("Pontuação atualizada!");
+                    Limpar.LimparTela();
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Retornando ao menu principal...");
                     Limpar.LimparTela();
                 }
             }
             else
             {
-                Console.WriteLine("Pontuação inválida! \nA pontuação deve ser um número inteiro.");
+                Console.WriteLine("Pontuação inválida! O número deve ser inteiro.");
                 Limpar.LimparTela();
             }
         }

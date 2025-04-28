@@ -40,7 +40,11 @@ namespace ProjetoBolao
                         {
                             break;
                         }
-                    default: Console.WriteLine("Opção inválida! Escolha um número válido."); break;
+                    default:
+                        {
+                            Console.WriteLine("Opção inválida! Escolha um número válido.");
+                            Limpar.LimparTela(); break;
+                        }
                 }
 
                 if (opcao == 0)
